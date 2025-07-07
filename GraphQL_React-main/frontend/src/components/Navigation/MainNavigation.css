@@ -4,18 +4,19 @@
   top: 0;
   width: 100%;
   height: 3.5rem;
-  background: #5101d1;
+  background: #a892ff; /* pastel purple */
   padding: 0 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
+  box-shadow: 0 2px 5px rgba(168, 146, 255, 0.5); /* subtle shadow */
 }
 
 .main-navigation__logo h1 {
   margin: 0;
   font-size: 1.5rem;
-  color: #dfcefc;
+  color: #f2e9ff; /* lighter pastel text */
 }
 
 .main-navigation__items {
@@ -37,7 +38,7 @@
 .main-navigation__items a,
 .main-navigation__items button {
   text-decoration: none;
-  color: white;
+  color: #f2e9ff; /* light pastel */
   padding: 0.25rem 0.5rem;
   border: none;
   font: inherit;
@@ -45,6 +46,7 @@
   cursor: pointer;
   vertical-align: middle;
   margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .main-navigation__items a:hover,
@@ -52,7 +54,7 @@
 .main-navigation__items a.active,
 .main-navigation__items button:hover,
 .main-navigation__items button:active {
-  background: #ffffff;
-  color: #5101d1;
+  background: #e4dbff; /* soft pastel hover background */
+  color: #7b5de8; /* slightly darker pastel purple */
   border-radius: 5px;
 }
