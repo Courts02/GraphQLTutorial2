@@ -1,7 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f3e8ff; /* pastel lavender background */
+  color: #333; /* gentle dark text */
 }
 
 .form-control label,
@@ -19,23 +21,33 @@ body {
   margin-bottom: 1rem;
 }
 
+.form-control input,
+.form-control textarea {
+  border: 2px solid #d8b4f8; /* pastel purple border */
+  border-radius: 5px;
+  padding: 0.5rem;
+  background: #fff;
+}
+
 .form-actions button,
 .btn {
-  background: #5101d1;
+  background: #d8b4f8; /* pastel purple button */
   font: inherit;
-  border: 1px solid #5101d1;
-  border-radius: 3px;
-  padding: 0.25rem 1rem;
+  border: 1px solid #d8b4f8;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
   margin-right: 1rem;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.26);
-  color: white;
+  box-shadow: 1px 1px 5px rgba(216, 180, 248, 0.3); /* subtle pastel shadow */
+  color: #fff;
   cursor: pointer;
+  transition: background 0.2s ease, border 0.2s ease;
 }
 
 .form-actions button:hover,
 .form-actions button:active,
 .btn:hover,
 .btn:active {
-  background: #6219d6;
-  border-color: #6219d6;
+  background: #c084fc; /* deeper pastel on hover */
+  border-color: #c084fc;
 }
+
