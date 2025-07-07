@@ -1,8 +1,10 @@
-
-.event__list {
-    width: 40rem;
-    max-width: 90%;
-    margin: 2rem auto;
-    list-style: none;
-    padding: 0;
-  }
+.events__list {
+  width: 40rem;
+  max-width: 90%;
+  margin: 2rem auto;
+  list-style: none;
+  padding: 0;
+  background-color: #f4f0ff; /* very light pastel purple background */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(154, 124, 255, 0.1);
+}
