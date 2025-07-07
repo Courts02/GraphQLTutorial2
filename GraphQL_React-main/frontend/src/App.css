@@ -1,3 +1,8 @@
 .main-content {
   margin: 4rem 2.5rem;
+  background-color: #ffffff; /* clean white background */
+  border: 2px solid #e9d5ff; /* soft pastel purple border */
+  border-radius: 12px; /* nice rounded corners */
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(216, 180, 248, 0.3); /* subtle lavender shadow */
 }
