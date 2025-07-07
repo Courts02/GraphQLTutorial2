@@ -7,15 +7,21 @@
   font: inherit;
   border: none;
   background: transparent;
-  color: black;
+  color: #6b4eff; /* pastel purple text */
   padding: 0.25rem 3rem;
   border-bottom: 2px solid transparent;
   cursor: pointer;
+  transition: color 0.3s ease, border-bottom-color 0.3s ease;
 }
 
 .bookings-control button.active {
-  border-bottom-color: #5101d1;
-  color: #5101d1;
+  border-bottom-color: #9a7cff; /* lighter pastel purple underline */
+  color: #9a7cff;
+  font-weight: 600;
+}
+
+.bookings-control button:hover:not(.active) {
+  color: #a08fff; /* subtle pastel hover */
 }
 
 .bookings-control button:focus {
