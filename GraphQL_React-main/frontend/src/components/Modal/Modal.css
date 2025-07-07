@@ -1,17 +1,20 @@
 .modal {
   width: 90%;
   background: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  box-shadow: 0 4px 12px rgba(154, 124, 255, 0.3); /* softer pastel shadow */
   position: fixed;
   top: 20vh;
   left: 5%;
   z-index: 100;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .modal__header {
   padding: 1rem;
-  background: #5101d1;
+  background: #9a7cff; /* pastel purple */
   color: white;
+  font-weight: 600;
 }
 
 .modal__header h1 {
@@ -21,12 +24,14 @@
 
 .modal__content {
   padding: 1rem;
+  color: #4a4a4a; /* softer text color */
 }
 
 .modal__actions {
   display: flex;
   justify-content: flex-end;
   padding: 1rem;
+  gap: 0.5rem;
 }
 
 @media (min-width: 768px) {
