@@ -1,24 +1,30 @@
 .events__list-item {
   margin: 1rem 0;
   padding: 1rem;
-  border: 1px solid #5101d1;
+  border: 1px solid #9a7cff; /* pastel purple border */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: 6px; /* nice soft corners */
+  background-color: #f7f5ff; /* very light pastel purple background */
+  box-shadow: 0 2px 6px rgba(154, 124, 255, 0.15); /* subtle shadow */
 }
 
 .events__list-item h1 {
   margin: 0;
   font-size: 1.5rem;
-  color: #5101d1;
+  color: #6b4eff; /* pastel purple text */
+  font-weight: 600;
 }
 
 .events__list-item h2 {
-    margin: 0;
-    font-size: 1rem;
-    color: #7c7c7c;
+  margin: 0;
+  font-size: 1rem;
+  color: #a8a8a8; /* softened gray */
+  font-weight: 400;
 }
 
 .events__list-item p {
-    margin: 0;
+  margin: 0;
+  color: #7d7d7d; /* medium gray for paragraphs */
 }
