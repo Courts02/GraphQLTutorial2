@@ -8,9 +8,18 @@
 
 .bookings__item {
   margin: 0.5rem 0;
-  padding: 0.5rem;
-  border: 1px solid #5101d1;
+  padding: 0.75rem 1rem;
+  border: 1px solid #c19eff; /* pastel purple border */
+  background-color: #f8f4ff; /* soft lavender background */
+  border-radius: 8px; /* gentle rounded corners */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 2px 6px rgba(193, 158, 255, 0.2); /* subtle soft shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bookings__item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(193, 158, 255, 0.3);
 }
