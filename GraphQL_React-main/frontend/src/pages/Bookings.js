@@ -1,41 +1,48 @@
 import React, { Component } from 'react';
 
+// ✅ Spinner for loading state
 import Spinner from '../components/Spinner/Spinner';
+// ✅ Auth context to get JWT token
 import AuthContext from '../context/auth-context';
+// ✅ Components for displaying bookings in different ways
 import BookingList from '../components/Bookings/BookingList/BookingList';
 import BookingsChart from '../components/Bookings/BookingsChart/BookingsChart';
 import BookingsControls from '../components/Bookings/BookingsControls/BookingsControls';
 
 class BookingsPage extends Component {
   state = {
-    isLoading: false,
-    bookings: [],
-    outputType: 'list'
+    isLoading: false,  // ✅ Controls spinner visibility
+    bookings: [],      // ✅ Holds all bookings fetched
+    outputType: 'list' // ✅ Switch between list and chart view
   };
 
-  static contextType = AuthContext;
+  static contextType = AuthContext; // ✅ So we can access `token` anywhere
 
   componentDidMount() {
+    // ✅ On page load, fetch all bookings
     this.fetchBookings();
   }
 
+  // ✅ --- GRAPHQL QUERY ---
+  // ✅ Fetch user's bookings
   fetchBookings = () => {
     this.setState({ isLoading: true });
+
     const requestBody = {
       query: `
-          query {
-            bookings {
+        query {
+          bookings {
+            _id
+            createdAt
+            event {
               _id
-             createdAt
-             event {
-               _id
-               title
-               date
-               price
-             }
+              title
+              date
+              price
             }
           }
-        `
+        }
+      `
     };
 
     fetch('http://localhost:8000/graphql', {
@@ -43,7 +50,7 @@ class BookingsPage extends Component {
       body: JSON.stringify(requestBody),
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + this.context.token
+        Authorization: 'Bearer ' + this.context.token // ✅ Pass JWT for auth
       }
     })
       .then(res => {
@@ -62,19 +69,22 @@ class BookingsPage extends Component {
       });
   };
 
+  // ✅ --- GRAPHQL MUTATION ---
+  // ✅ Runs when user clicks "Cancel" to remove a booking
   deleteBookingHandler = bookingId => {
     this.setState({ isLoading: true });
+
     const requestBody = {
       query: `
-          mutation CancelBooking($id: ID!) {
-            cancelBooking(bookingId: $id) {
+        mutation CancelBooking($id: ID!) {
+          cancelBooking(bookingId: $id) {
             _id
-             title
-            }
+            title
           }
-        `,
+        }
+      `,
       variables: {
-        id: bookingId
+        id: bookingId // ✅ Pass the booking ID to cancel
       }
     };
 
@@ -83,7 +93,7 @@ class BookingsPage extends Component {
       body: JSON.stringify(requestBody),
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + this.context.token
+        Authorization: 'Bearer ' + this.context.token // ✅ JWT auth again!
       }
     })
       .then(res => {
@@ -93,6 +103,7 @@ class BookingsPage extends Component {
         return res.json();
       })
       .then(resData => {
+        // ✅ Remove the cancelled booking from local state
         this.setState(prevState => {
           const updatedBookings = prevState.bookings.filter(booking => {
             return booking._id !== bookingId;
@@ -106,6 +117,7 @@ class BookingsPage extends Component {
       });
   };
 
+  // ✅ Switch between list and chart
   changeOutputTypeHandler = outputType => {
     if (outputType === 'list') {
       this.setState({ outputType: 'list' });
@@ -116,26 +128,32 @@ class BookingsPage extends Component {
 
   render() {
     let content = <Spinner />;
+
     if (!this.state.isLoading) {
       content = (
         <React.Fragment>
+          {/* ✅ Controls to switch views */}
           <BookingsControls
             activeOutputType={this.state.outputType}
             onChange={this.changeOutputTypeHandler}
           />
+
           <div>
             {this.state.outputType === 'list' ? (
+              // ✅ List view of bookings with cancel button
               <BookingList
                 bookings={this.state.bookings}
-                onDelete={this.deleteBookingHandler}
+                onDelete={this.deleteBookingHandler} // ✅ Cancel = MUTATION!
               />
             ) : (
+              // ✅ Chart view of bookings
               <BookingsChart bookings={this.state.bookings} />
             )}
           </div>
         </React.Fragment>
       );
     }
+
     return <React.Fragment>{content}</React.Fragment>;
   }
 }
